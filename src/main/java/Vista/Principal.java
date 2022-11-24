@@ -71,7 +71,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         lbl_idProducto = new javax.swing.JLabel();
         panel_configuracion = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
+        panel_ventas = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
@@ -100,7 +100,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         productoTabla = new javax.swing.JTable();
         txt_buscarUsuario2 = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
+        panel_principal = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -294,8 +294,8 @@ public class Principal extends javax.swing.JFrame {
         panel_configuracion.setBackground(new java.awt.Color(255, 255, 255));
         tabed.addTab("tab7", panel_configuracion);
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel_ventas.setBackground(new java.awt.Color(255, 255, 255));
+        panel_ventas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable2.setBackground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -308,14 +308,14 @@ public class Principal extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(jTable2);
 
-        jPanel9.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 870, -1));
+        panel_ventas.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 870, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Registro de Ventas");
-        jPanel9.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 280, 40));
+        panel_ventas.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 280, 40));
 
-        tabed.addTab("tab6", jPanel9);
+        tabed.addTab("tab6", panel_ventas);
 
         panel_categorias.setBackground(new java.awt.Color(255, 255, 255));
         panel_categorias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -485,8 +485,8 @@ public class Principal extends javax.swing.JFrame {
 
         tabed.addTab("tab2", panel_productos);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel_principal.setBackground(new java.awt.Color(255, 255, 255));
+        panel_principal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBackground(new java.awt.Color(255, 153, 153));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -503,7 +503,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel13.setText("10");
         jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 160, 30));
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 160, 100));
+        panel_principal.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 160, 100));
 
         jPanel7.setBackground(new java.awt.Color(255, 153, 153));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -520,7 +520,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel16.setText("Ventas HOY");
         jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 160, 30));
 
-        jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 160, 100));
+        panel_principal.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 160, 100));
 
         jPanel8.setBackground(new java.awt.Color(255, 153, 153));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -537,9 +537,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel20.setText("10");
         jPanel8.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 160, 30));
 
-        jPanel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 160, 100));
+        panel_principal.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 160, 100));
 
-        tabed.addTab("tab3", jPanel5);
+        tabed.addTab("tab3", panel_principal);
 
         jPanel1.add(tabed, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 1060, 680));
 
@@ -575,7 +575,7 @@ public class Principal extends javax.swing.JFrame {
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel_menu.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 120, 30));
 
-        jButton7.setText("Configuracion");
+        jButton7.setText("Clientes");
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel_menu.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 120, 30));
 
@@ -721,11 +721,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -748,8 +746,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel panel_configuracion;
     private javax.swing.JPanel panel_menu;
     public static javax.swing.JPanel panel_nuevasVentas;
+    private javax.swing.JPanel panel_principal;
     public static javax.swing.JPanel panel_productos;
     public static javax.swing.JPanel panel_usuarios;
+    private javax.swing.JPanel panel_ventas;
     private javax.swing.JPopupMenu popCategoria;
     private javax.swing.JPopupMenu popNuevaVenta;
     private javax.swing.JPopupMenu popProducto;

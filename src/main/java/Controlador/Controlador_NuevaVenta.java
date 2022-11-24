@@ -119,22 +119,19 @@ public class Controlador_NuevaVenta implements ActionListener {
 
             String idV = lbl_idProducto.getText();
             String nombreV = lbl_nombre.getText();
-
             int cantidadV = Integer.parseInt(txt_cantidad.getText());
             int stockV = Integer.parseInt(lbl_stock.getText());
             double precioV = Double.parseDouble(lbl_precio.getText());
             double total = cantidadV * precioV;
-
-            if (stockV >= cantidadV) {
+            
+            if (stockV >= cantidadV) {  
                 objVenta++;
                 tablaNuevaV = (DefaultTableModel) nuevaVentaTabla.getModel();
-
                 //no se repitan productos
                 for (int i = 0; i < nuevaVentaTabla.getRowCount(); i++) {
                     if (nuevaVentaTabla.getValueAt(i, 1).equals(lbl_nombre.getText())) {
                         JOptionPane.showMessageDialog(null, "EL PRODUCTO SE REPITE, MODIFIQUE LA CANTIDAD");
                         return;
-
                     }
                 }
                 ArrayList listaVenta = new ArrayList();
