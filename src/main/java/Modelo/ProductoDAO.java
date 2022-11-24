@@ -115,7 +115,8 @@ public class ProductoDAO {
 
     //BUSCAR PRODCUTO POR ID O NOMBRE SEGUN LO QUE INGRESEMOS
     public List buscarSegunId_Producto(String filtro, String valor) {
-        String sql = "select * from producto where " + filtro + " like '%" + valor + "%'";
+        String sql = "select p.id_producto,p.nombre,p.descripcion,p.cantidad,p.precio,c.nombre_cat,p.estado from producto p inner join categoria c on p.id_categoria=c.id_categoria where " + filtro + " like '%" + valor + "%'";
+        //String sql = "select * from producto where " + filtro + " like '%" + valor + "%'";
         List<Producto> lista = new ArrayList<>();
         try {
             con = cn.getConnection();
@@ -127,8 +128,10 @@ public class ProductoDAO {
                 pro.setId(rs.getInt("id_producto"));
                 pro.setNombre(rs.getString("nombre"));
                 pro.setDescripcion(rs.getString("descripcion"));
-                pro.setCantidad(rs.getInt("cantidad"));
+                pro.setNomCategoria(rs.getString("nombre_cat"));
                 pro.setPrecio(rs.getDouble("precio"));
+                pro.setCantidad(rs.getInt("cantidad"));
+                pro.setEstado(rs.getString("estado"));
 
                 lista.add(pro);
             }

@@ -234,7 +234,6 @@ public class Controlador_Usuario implements ActionListener {
     }
 
     public void editarUsuario() {
-
         int fila = principal.usuarioTabla.getSelectedRow();
         editUsuario.lbl_id.setText(usuarioTabla.getValueAt(fila, 0).toString());
         editUsuario.txt_nombre.setText(usuarioTabla.getValueAt(fila, 1).toString());
@@ -245,7 +244,6 @@ public class Controlador_Usuario implements ActionListener {
         editUsuario.cbx_rol.setSelectedItem(usuarioTabla.getValueAt(fila, 7).toString());
         editUsuario.cbx_estado.setSelectedItem(usuarioTabla.getValueAt(fila, 8).toString());
         editUsuario.setVisible(true);
-
     }
 
     public void actualizarUsuario() {

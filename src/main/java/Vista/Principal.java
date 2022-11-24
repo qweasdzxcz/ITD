@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.Controlador_Categoria;
+import Controlador.Controlador_NuevaVenta;
 import Controlador.Controlador_Producto;
 import Vista.Usuario.formUsuario;
 import Controlador.Controlador_Usuario;
@@ -8,6 +9,7 @@ import Vista.Producto.formProducto;
 import Vista.Usuario.editUsuario;
 import Vista.Producto.formProducto;
 import Vista.Producto.editProducto;
+import Vista.Ventas.BusquedaProducto;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -35,6 +37,8 @@ public class Principal extends javax.swing.JFrame {
         btn_editarProducto = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         btn_eliminarProducto = new javax.swing.JMenuItem();
+        popNuevaVenta = new javax.swing.JPopupMenu();
+        btn_eliminarPedido = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lbl_datos = new javax.swing.JLabel();
@@ -46,22 +50,27 @@ public class Principal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         btn_menu = new javax.swing.JButton();
         tabed = new javax.swing.JTabbedPane();
-        panel_configuracion = new javax.swing.JPanel();
-        panel_NuevasVentas = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        Buscar = new javax.swing.JButton();
+        panel_nuevasVentas = new javax.swing.JPanel();
+        txt_cantidad = new javax.swing.JTextField();
+        btn_buscarProducto = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lbl_precio = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jSeparator4 = new javax.swing.JSeparator();
+        nuevaVentaTabla = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
-        jSeparator6 = new javax.swing.JSeparator();
-        Buscar1 = new javax.swing.JButton();
+        btn_generarVenta = new javax.swing.JButton();
+        btn_buscarCliente = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
+        lbl_total = new javax.swing.JLabel();
+        lbl_nombre = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lbl_cliente = new javax.swing.JLabel();
+        btn_agregarTabla = new javax.swing.JButton();
+        lbl_stock = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        lbl_idProducto = new javax.swing.JLabel();
+        panel_configuracion = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -106,7 +115,7 @@ public class Principal extends javax.swing.JFrame {
         btn_usuarios = new javax.swing.JButton();
         btn_productos = new javax.swing.JButton();
         btn_categorias = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btn_nuevasVentas = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
@@ -146,6 +155,9 @@ public class Principal extends javax.swing.JFrame {
 
         btn_eliminarProducto.setText("Eliminar");
         popProducto.add(btn_eliminarProducto);
+
+        btn_eliminarPedido.setText("Eliminar");
+        popNuevaVenta.add(btn_eliminarPedido);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -198,68 +210,89 @@ public class Principal extends javax.swing.JFrame {
 
         tabed.setBackground(new java.awt.Color(255, 255, 255));
 
-        panel_configuracion.setBackground(new java.awt.Color(255, 255, 255));
-        tabed.addTab("tab7", panel_configuracion);
+        panel_nuevasVentas.setBackground(new java.awt.Color(255, 255, 255));
+        panel_nuevasVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel_NuevasVentas.setBackground(new java.awt.Color(255, 255, 255));
-        panel_NuevasVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        txt_cantidad.setBackground(new java.awt.Color(255, 255, 255));
+        panel_nuevasVentas.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 60, 30));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        panel_NuevasVentas.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, -1, 30));
-
-        Buscar.setText("Buscar");
-        panel_NuevasVentas.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, -1, 30));
+        btn_buscarProducto.setText("Buscar producto");
+        panel_nuevasVentas.add(btn_buscarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 30));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("precio");
-        panel_NuevasVentas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 90, -1));
+        jLabel2.setText("Stock");
+        panel_nuevasVentas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 90, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cliente");
-        panel_NuevasVentas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 560, 80, 20));
+        panel_nuevasVentas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 560, 80, 20));
 
-        jLabel7.setText("0");
-        panel_NuevasVentas.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, 30));
+        lbl_precio.setText("0");
+        panel_nuevasVentas.add(lbl_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 60, 30));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        nuevaVentaTabla.setBackground(new java.awt.Color(255, 255, 255));
+        nuevaVentaTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "iteam", "nombre", "precio Unit", "cantidad", "precio total"
+                "item", "nombre", "precio Unit", "cantidad", "precio total"
             }
         ));
-        jScrollPane4.setViewportView(jTable1);
+        jScrollPane4.setViewportView(nuevaVentaTabla);
 
-        panel_NuevasVentas.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 680, -1));
-        panel_NuevasVentas.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 580, 100, 10));
+        panel_nuevasVentas.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 680, -1));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Cantidad");
-        panel_NuevasVentas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 90, -1));
-        panel_NuevasVentas.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 83, 210, 10));
+        jLabel6.setText("Nombre");
+        panel_nuevasVentas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 90, -1));
 
-        jButton2.setText("Generar Venta");
-        panel_NuevasVentas.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, 170, 50));
-        panel_NuevasVentas.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 610, 210, 10));
+        btn_generarVenta.setText("Generar Venta");
+        panel_nuevasVentas.add(btn_generarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, 170, 50));
 
-        Buscar1.setText("Buscar");
-        panel_NuevasVentas.add(Buscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 580, -1, 30));
+        btn_buscarCliente.setText("Buscar");
+        panel_nuevasVentas.add(btn_buscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 580, -1, 30));
 
         jLabel18.setBackground(new java.awt.Color(0, 0, 0));
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Total");
-        panel_NuevasVentas.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 570, 80, 20));
+        panel_nuevasVentas.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 570, 80, 20));
+        panel_nuevasVentas.add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 556, 70, 40));
+        panel_nuevasVentas.add(lbl_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 56, 180, 30));
 
-        tabed.addTab("tab4", panel_NuevasVentas);
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Cantidad");
+        panel_nuevasVentas.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 90, -1));
+        panel_nuevasVentas.add(lbl_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 210, 30));
+
+        btn_agregarTabla.setText("Añadir");
+        panel_nuevasVentas.add(btn_agregarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 100, 30));
+
+        lbl_stock.setText("0");
+        panel_nuevasVentas.add(lbl_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 70, 30));
+
+        jLabel22.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Precio");
+        panel_nuevasVentas.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 90, -1));
+
+        lbl_idProducto.setText("0");
+        panel_nuevasVentas.add(lbl_idProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 50, 20));
+
+        tabed.addTab("tab4", panel_nuevasVentas);
+
+        panel_configuracion.setBackground(new java.awt.Color(255, 255, 255));
+        tabed.addTab("tab7", panel_configuracion);
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -534,9 +567,9 @@ public class Principal extends javax.swing.JFrame {
         btn_categorias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel_menu.add(btn_categorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 120, 30));
 
-        jButton5.setText("Nueva Venta");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panel_menu.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 120, 30));
+        btn_nuevasVentas.setText("Nueva Venta");
+        btn_nuevasVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panel_menu.add(btn_nuevasVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 120, 30));
 
         jButton6.setText("Ventas");
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -617,9 +650,12 @@ public class Principal extends javax.swing.JFrame {
                 editUsuario e = new editUsuario(new javax.swing.JFrame(), true);
                 formProducto fp = new formProducto(new javax.swing.JFrame(), true);
                 editProducto ep = new editProducto(new javax.swing.JFrame(), true);
+                BusquedaProducto busProducto = new BusquedaProducto(new javax.swing.JFrame(), true);
+                
                 Controlador_Usuario cu = new Controlador_Usuario(p, f, e);
                 Controlador_Categoria cc = new Controlador_Categoria(p);
                 Controlador_Producto cp = new Controlador_Producto(p, fp, ep);
+                Controlador_NuevaVenta cnv = new Controlador_NuevaVenta(p, busProducto);
                 cc.ocultarErrores();
                 cu.ocultarErrores();
                 cp.ocultarErrores();
@@ -630,18 +666,22 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Buscar;
-    private javax.swing.JButton Buscar1;
     private javax.swing.JPanel barraEmpresa;
     public javax.swing.JButton btn_actualizarCategoria;
-    public static javax.swing.JButton btn_categorias;
+    public javax.swing.JButton btn_agregarTabla;
+    public javax.swing.JButton btn_buscarCliente;
+    public javax.swing.JButton btn_buscarProducto;
+    public javax.swing.JButton btn_categorias;
     public javax.swing.JMenuItem btn_editarCategoria;
     public javax.swing.JMenuItem btn_editarProducto;
     public javax.swing.JMenuItem btn_editarUsuario;
     public javax.swing.JMenuItem btn_eliminarCategoria;
+    public javax.swing.JMenuItem btn_eliminarPedido;
     public javax.swing.JMenuItem btn_eliminarProducto;
     public javax.swing.JMenuItem btn_eliminarUsuario;
+    public javax.swing.JButton btn_generarVenta;
     public javax.swing.JButton btn_menu;
+    public javax.swing.JButton btn_nuevasVentas;
     public javax.swing.JButton btn_nuevoProducto;
     public javax.swing.JButton btn_nuevoUsuario;
     public javax.swing.JButton btn_productos;
@@ -651,10 +691,8 @@ public class Principal extends javax.swing.JFrame {
     public static javax.swing.JComboBox<String> cbx_estadoCat;
     public static javax.swing.JLabel error_estadoCat;
     public static javax.swing.JLabel error_nombreCat;
-    public static javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    public static javax.swing.JButton jButton5;
-    public static javax.swing.JButton jButton6;
+    public javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton6;
     public static javax.swing.JButton jButton7;
     public static javax.swing.JButton jButton8;
     public static javax.swing.JButton jButton9;
@@ -671,6 +709,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -695,27 +734,31 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
+    public static javax.swing.JLabel lbl_cliente;
     public static javax.swing.JLabel lbl_datos;
     public static javax.swing.JLabel lbl_idCategoria;
-    private javax.swing.JPanel panel_NuevasVentas;
+    public static javax.swing.JLabel lbl_idProducto;
+    public static javax.swing.JLabel lbl_nombre;
+    public static javax.swing.JLabel lbl_precio;
+    public static javax.swing.JLabel lbl_stock;
+    public static javax.swing.JLabel lbl_total;
+    public static javax.swing.JTable nuevaVentaTabla;
     public static javax.swing.JPanel panel_categorias;
     private javax.swing.JPanel panel_configuracion;
     private javax.swing.JPanel panel_menu;
+    public static javax.swing.JPanel panel_nuevasVentas;
     public static javax.swing.JPanel panel_productos;
     public static javax.swing.JPanel panel_usuarios;
     private javax.swing.JPopupMenu popCategoria;
+    private javax.swing.JPopupMenu popNuevaVenta;
     private javax.swing.JPopupMenu popProducto;
     private javax.swing.JPopupMenu popUsuario;
     public static javax.swing.JTable productoTabla;
     public static javax.swing.JTabbedPane tabed;
     private javax.swing.JTextField txt_buscarUsuario;
     private javax.swing.JTextField txt_buscarUsuario2;
+    public static javax.swing.JTextField txt_cantidad;
     public static javax.swing.JTextField txt_nombreCat;
     public static javax.swing.JTable usuarioTabla;
     // End of variables declaration//GEN-END:variables
