@@ -147,7 +147,8 @@ public class BusquedaProducto extends javax.swing.JDialog {
                     }
                 });
                 Principal p = new Principal();
-                Controlador_NuevaVenta cnv = new Controlador_NuevaVenta(p, dialog);
+                BusquedaCliente busCliente = new BusquedaCliente(new javax.swing.JFrame(), true);
+                Controlador_NuevaVenta cnv = new Controlador_NuevaVenta(p, dialog, busCliente);
 
                 dialog.setVisible(true);
             }

@@ -45,17 +45,9 @@ public class BusquedaCliente extends javax.swing.JDialog {
 
             },
             new String [] {
-                "id", "nombre", "descripcion", "Categoria", "precio Unit", "Stock"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         busquedaProductoTabla.getTableHeader().setResizingAllowed(false);
         busquedaProductoTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(busquedaProductoTabla);
@@ -82,22 +74,7 @@ public class BusquedaCliente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_valorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_valorKeyTyped
-        char validar = evt.getKeyChar();
-        if (cbx_parametro.getSelectedIndex()==0) {
-            if (Character.isLetter(validar)) {
-                evt.consume();
-                // JOptionPane.showMessageDialog(null, "INGRESE SOLO NUMEROS");
-            }
-        }
-        if (cbx_parametro.getSelectedIndex()==1) {
-            if (Character.isDigit(validar)) {
-                // getToolkit().beep();
-                evt.consume();
-                // JOptionPane.showMessageDialog(null, "INGRESE SOLO LETRAS");
-            }
-        }
-        limpiarTablaBuscar();
-        tablaDatos();
+       
     }//GEN-LAST:event_txt_valorKeyTyped
 
     /**

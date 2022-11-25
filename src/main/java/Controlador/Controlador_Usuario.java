@@ -125,6 +125,7 @@ public class Controlador_Usuario implements ActionListener {
                 lbl.setText("El campo debe contener " + tamaño + " digitos");
                 return false;
             }
+            lbl.setVisible(false);
         }
         switch (nombreColumna) {
             case "dni" -> {

@@ -10,8 +10,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import Utilidades.Encriptar;
+import Vista.Cliente.editCliente;
+import Vista.Cliente.formCliente;
+import Vista.Producto.editProducto;
+import Vista.Producto.formProducto;
 import Vista.Usuario.editUsuario;
 import Vista.Usuario.formUsuario;
+import Vista.Ventas.BusquedaCliente;
+import Vista.Ventas.BusquedaProducto;
 
 public class Controlador_Login implements ActionListener {
 
@@ -58,12 +64,28 @@ public class Controlador_Login implements ActionListener {
                 error_ingresar.setText("Usuario o password incorrecto");
 
             } else {
-                Principal principal = new Principal();
+                Principal p = new Principal();
                 formUsuario f = new formUsuario(new javax.swing.JFrame(), true);
                 editUsuario e = new editUsuario(new javax.swing.JFrame(), true);
-                Controlador_Usuario cu = new Controlador_Usuario(principal, f, e);
-                Controlador_Categoria cc = new Controlador_Categoria(principal);
-                principal.setVisible(true);
+                formProducto fp = new formProducto(new javax.swing.JFrame(), true);
+                editProducto ep = new editProducto(new javax.swing.JFrame(), true);
+                BusquedaProducto busProducto = new BusquedaProducto(new javax.swing.JFrame(), true);
+                BusquedaCliente busCliente = new BusquedaCliente(new javax.swing.JFrame(), true);
+                formCliente fc = new formCliente(new javax.swing.JFrame(), true);
+                editCliente ec = new editCliente(new javax.swing.JFrame(), true);
+                
+                Controlador_Usuario cu = new Controlador_Usuario(p, f, e);
+                Controlador_Categoria cc = new Controlador_Categoria(p);
+                Controlador_Producto cp = new Controlador_Producto(p, fp, ep);
+                Controlador_Cliente ccli = new Controlador_Cliente(p, fc, ec);
+                Controlador_NuevaVenta cnv = new Controlador_NuevaVenta(p, busProducto, busCliente);
+                Controlador_Ventas cv = new Controlador_Ventas(p);
+                cc.ocultarErrores();
+                cu.ocultarErrores();
+                cp.ocultarErrores();
+                //cp.llenarCategoria();
+                p.setVisible(true);
+                
 
                 String username = usuario.getUsername();
                 String rol = usuario.getRol();

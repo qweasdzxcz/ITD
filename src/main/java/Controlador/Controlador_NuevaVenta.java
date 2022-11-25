@@ -7,6 +7,7 @@ import Vista.Principal;
 import static Vista.Principal.*;
 import Vista.Producto.editProducto;
 import Vista.Producto.formProducto;
+import Vista.Ventas.BusquedaCliente;
 import Vista.Ventas.BusquedaProducto;
 import static Vista.Ventas.BusquedaProducto.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +22,8 @@ public class Controlador_NuevaVenta implements ActionListener {
 
     private Principal principal;
     private BusquedaProducto busquedaPro;
+    private BusquedaCliente busquedaCli;
+
     Producto producto = new Producto();
     ProductoDAO productoDAO = new ProductoDAO();
 
@@ -29,9 +32,10 @@ public class Controlador_NuevaVenta implements ActionListener {
 
     int objVenta = 0;
 
-    public Controlador_NuevaVenta(Principal principal, BusquedaProducto busquedaPro) {
+    public Controlador_NuevaVenta(Principal principal, BusquedaProducto busquedaPro, BusquedaCliente busquedaCli) {
         this.principal = principal;
         this.busquedaPro = busquedaPro;
+        this.busquedaCli = busquedaCli;
         principal.btn_nuevasVentas.addActionListener(this);
         principal.btn_buscarProducto.addActionListener(this);
         principal.btn_buscarCliente.addActionListener(this);
@@ -45,7 +49,7 @@ public class Controlador_NuevaVenta implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == principal.btn_nuevasVentas) {
             principal.tabed.setSelectedComponent(panel_nuevasVentas);
-            listarProducto(principal.productoTabla);
+            //listarProducto(principal.productoTabla);
         }
         if (e.getSource() == principal.btn_buscarProducto) {
             busquedaPro.setVisible(true);
@@ -57,7 +61,7 @@ public class Controlador_NuevaVenta implements ActionListener {
             agregarTabla();
         }
         if (e.getSource() == principal.btn_buscarCliente) {
-
+            busquedaCli.setVisible(true);
         }
         if (e.getSource() == principal.btn_generarVenta) {
 
@@ -123,8 +127,8 @@ public class Controlador_NuevaVenta implements ActionListener {
             int stockV = Integer.parseInt(lbl_stock.getText());
             double precioV = Double.parseDouble(lbl_precio.getText());
             double total = cantidadV * precioV;
-            
-            if (stockV >= cantidadV) {  
+
+            if (stockV >= cantidadV) {
                 objVenta++;
                 tablaNuevaV = (DefaultTableModel) nuevaVentaTabla.getModel();
                 //no se repitan productos

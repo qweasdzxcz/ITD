@@ -1,14 +1,19 @@
 package Vista;
 
 import Controlador.Controlador_Categoria;
+import Controlador.Controlador_Cliente;
 import Controlador.Controlador_NuevaVenta;
 import Controlador.Controlador_Producto;
 import Vista.Usuario.formUsuario;
 import Controlador.Controlador_Usuario;
+import Controlador.Controlador_Ventas;
+import Vista.Cliente.editCliente;
+import Vista.Cliente.formCliente;
 import Vista.Producto.formProducto;
 import Vista.Usuario.editUsuario;
 import Vista.Producto.formProducto;
 import Vista.Producto.editProducto;
+import Vista.Ventas.BusquedaCliente;
 import Vista.Ventas.BusquedaProducto;
 
 public class Principal extends javax.swing.JFrame {
@@ -39,9 +44,12 @@ public class Principal extends javax.swing.JFrame {
         btn_eliminarProducto = new javax.swing.JMenuItem();
         popNuevaVenta = new javax.swing.JPopupMenu();
         btn_eliminarPedido = new javax.swing.JMenuItem();
+        popCliente = new javax.swing.JPopupMenu();
+        btn_editarCliente = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        btn_eliminarCliente = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lbl_datos = new javax.swing.JLabel();
         barraEmpresa = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -49,6 +57,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         btn_menu = new javax.swing.JButton();
+        lbl_datos = new javax.swing.JLabel();
         tabed = new javax.swing.JTabbedPane();
         panel_nuevasVentas = new javax.swing.JPanel();
         txt_cantidad = new javax.swing.JTextField();
@@ -110,16 +119,18 @@ public class Principal extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        panel_clientes = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btn_nuevoCliente = new javax.swing.JButton();
         panel_menu = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btn_usuarios = new javax.swing.JButton();
         btn_productos = new javax.swing.JButton();
         btn_categorias = new javax.swing.JButton();
         btn_nuevasVentas = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btn_ventas = new javax.swing.JButton();
+        btn_clientes = new javax.swing.JButton();
 
         btn_editarUsuario.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         btn_editarUsuario.setText("Editar");
@@ -159,6 +170,13 @@ public class Principal extends javax.swing.JFrame {
         btn_eliminarPedido.setText("Eliminar");
         popNuevaVenta.add(btn_eliminarPedido);
 
+        btn_editarCliente.setText("Editar");
+        popCliente.add(btn_editarCliente);
+        popCliente.add(jSeparator4);
+
+        btn_eliminarCliente.setText("Eliminar");
+        popCliente.add(btn_eliminarCliente);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
@@ -167,10 +185,6 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbl_datos.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        lbl_datos.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(lbl_datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 200, 30));
 
         barraEmpresa.setBackground(new java.awt.Color(254, 242, 220));
         barraEmpresa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -202,6 +216,10 @@ public class Principal extends javax.swing.JFrame {
 
         btn_menu.setText("menu");
         barraEmpresa.add(btn_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, 30));
+
+        lbl_datos.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        lbl_datos.setForeground(new java.awt.Color(0, 0, 0));
+        barraEmpresa.add(lbl_datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 200, 30));
 
         jPanel2.add(barraEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 50));
 
@@ -541,6 +559,37 @@ public class Principal extends javax.swing.JFrame {
 
         tabed.addTab("tab3", panel_principal);
 
+        panel_clientes.setBackground(new java.awt.Color(255, 255, 255));
+        panel_clientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "NOMBRE", "APELLIDO P.", "APELLIDO M.", "CELULAR", "DIRECCION", "ESTADO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(jTable1);
+
+        panel_clientes.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 930, -1));
+
+        btn_nuevoCliente.setText("Nuevo CLiente");
+        panel_clientes.add(btn_nuevoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 40, 150, 50));
+
+        tabed.addTab("tab8", panel_clientes);
+
         jPanel1.add(tabed, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 1060, 680));
 
         panel_menu.setBackground(new java.awt.Color(255, 153, 102));
@@ -571,21 +620,13 @@ public class Principal extends javax.swing.JFrame {
         btn_nuevasVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel_menu.add(btn_nuevasVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 120, 30));
 
-        jButton6.setText("Ventas");
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panel_menu.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 120, 30));
+        btn_ventas.setText("Ventas");
+        btn_ventas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panel_menu.add(btn_ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 120, 30));
 
-        jButton7.setText("Clientes");
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panel_menu.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 120, 30));
-
-        jButton8.setText("jButton1");
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panel_menu.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 120, 30));
-
-        jButton9.setText("jButton1");
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panel_menu.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 120, 30));
+        btn_clientes.setText("Clientes");
+        btn_clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panel_menu.add(btn_clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 120, 30));
 
         jPanel1.add(panel_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 140, 650));
 
@@ -651,11 +692,16 @@ public class Principal extends javax.swing.JFrame {
                 formProducto fp = new formProducto(new javax.swing.JFrame(), true);
                 editProducto ep = new editProducto(new javax.swing.JFrame(), true);
                 BusquedaProducto busProducto = new BusquedaProducto(new javax.swing.JFrame(), true);
+                BusquedaCliente busCliente = new BusquedaCliente(new javax.swing.JFrame(), true);
+                formCliente fc = new formCliente(new javax.swing.JFrame(), true);
+                editCliente ec = new editCliente(new javax.swing.JFrame(), true);
                 
                 Controlador_Usuario cu = new Controlador_Usuario(p, f, e);
                 Controlador_Categoria cc = new Controlador_Categoria(p);
                 Controlador_Producto cp = new Controlador_Producto(p, fp, ep);
-                Controlador_NuevaVenta cnv = new Controlador_NuevaVenta(p, busProducto);
+                Controlador_Cliente ccli = new Controlador_Cliente(p, fc, ec);
+                Controlador_NuevaVenta cnv = new Controlador_NuevaVenta(p, busProducto, busCliente);
+                Controlador_Ventas cv = new Controlador_Ventas(p);
                 cc.ocultarErrores();
                 cu.ocultarErrores();
                 cp.ocultarErrores();
@@ -672,30 +718,31 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JButton btn_buscarCliente;
     public javax.swing.JButton btn_buscarProducto;
     public javax.swing.JButton btn_categorias;
+    public javax.swing.JButton btn_clientes;
     public javax.swing.JMenuItem btn_editarCategoria;
+    public javax.swing.JMenuItem btn_editarCliente;
     public javax.swing.JMenuItem btn_editarProducto;
     public javax.swing.JMenuItem btn_editarUsuario;
     public javax.swing.JMenuItem btn_eliminarCategoria;
+    public javax.swing.JMenuItem btn_eliminarCliente;
     public javax.swing.JMenuItem btn_eliminarPedido;
     public javax.swing.JMenuItem btn_eliminarProducto;
     public javax.swing.JMenuItem btn_eliminarUsuario;
     public javax.swing.JButton btn_generarVenta;
     public javax.swing.JButton btn_menu;
     public javax.swing.JButton btn_nuevasVentas;
+    public javax.swing.JButton btn_nuevoCliente;
     public javax.swing.JButton btn_nuevoProducto;
     public javax.swing.JButton btn_nuevoUsuario;
     public javax.swing.JButton btn_productos;
     public javax.swing.JButton btn_registrarCategoria;
     public javax.swing.JButton btn_usuarios;
+    public javax.swing.JButton btn_ventas;
     public static javax.swing.JTable categoriaTabla;
     public static javax.swing.JComboBox<String> cbx_estadoCat;
     public static javax.swing.JLabel error_estadoCat;
     public static javax.swing.JLabel error_nombreCat;
     public javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton6;
-    public static javax.swing.JButton jButton7;
-    public static javax.swing.JButton jButton8;
-    public static javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -729,9 +776,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     public static javax.swing.JLabel lbl_cliente;
     public static javax.swing.JLabel lbl_datos;
@@ -743,14 +793,16 @@ public class Principal extends javax.swing.JFrame {
     public static javax.swing.JLabel lbl_total;
     public static javax.swing.JTable nuevaVentaTabla;
     public static javax.swing.JPanel panel_categorias;
-    private javax.swing.JPanel panel_configuracion;
+    public static javax.swing.JPanel panel_clientes;
+    public static javax.swing.JPanel panel_configuracion;
     private javax.swing.JPanel panel_menu;
     public static javax.swing.JPanel panel_nuevasVentas;
-    private javax.swing.JPanel panel_principal;
+    public static javax.swing.JPanel panel_principal;
     public static javax.swing.JPanel panel_productos;
     public static javax.swing.JPanel panel_usuarios;
-    private javax.swing.JPanel panel_ventas;
+    public static javax.swing.JPanel panel_ventas;
     private javax.swing.JPopupMenu popCategoria;
+    private javax.swing.JPopupMenu popCliente;
     private javax.swing.JPopupMenu popNuevaVenta;
     private javax.swing.JPopupMenu popProducto;
     private javax.swing.JPopupMenu popUsuario;
