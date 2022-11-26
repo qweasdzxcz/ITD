@@ -7,19 +7,17 @@ public class Cliente {
     private String apellidoP;
     private String apellidoM;
     private String celular;
-    private String direccion;
     private String estado;
 
     public Cliente() {
     }
 
-    public Cliente(int id, String nombre, String apellidoP, String apellidoM, String celular, String direccion, String estado) {
+    public Cliente(int id, String nombre, String apellidoP, String apellidoM, String celular, String estado) {
         this.id = id;
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
         this.celular = celular;
-        this.direccion = direccion;
         this.estado = estado;
     }
 
@@ -61,14 +59,6 @@ public class Cliente {
 
     public void setCelular(String celular) {
         this.celular = celular;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public String getEstado() {

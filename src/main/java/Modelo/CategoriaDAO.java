@@ -68,6 +68,27 @@ public class CategoriaDAO {
         }
         return lista;
     }
+    
+     public List llenarCbxCategoria() {
+        String sql = "select * from categoria where estado = 'Activo'";
+        List<Categoria> lista = new ArrayList<>();
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Categoria cat = new Categoria();
+
+                cat.setId(rs.getInt("id_categoria"));
+                cat.setNombre(rs.getString("nombre_cat"));
+                cat.setEstado(rs.getString("estado"));
+
+                lista.add(cat);
+            }
+        } catch (Exception e) {
+        }
+        return lista;
+    }
 
     public boolean eliminarCategoria(int id) {
         String sql = "delete from categoria where id_categoria = ?";

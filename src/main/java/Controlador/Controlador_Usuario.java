@@ -188,15 +188,15 @@ public class Controlador_Usuario implements ActionListener {
 
             //JOptionPane.showMessageDialog(null,"pass : "+txt_password.getText()+"\nencriptado : "+encriptado);
             usuarioDAO.agregarUsuario(usuario);
-            JOptionPane.showMessageDialog(null, "guardado");
+            JOptionPane.showMessageDialog(null, "usuario registrado");
             limpiarCampos();
             ocultarErrores();
-            limpiarTablaUsusario();
             listarUsuario(usuarioTabla);
         }
     }
 
     public void listarUsuario(JTable tabla) {
+        limpiarTablaUsusario();
         List<Usuario> listaU = usuarioDAO.listarUsuario();
         tablaU = (DefaultTableModel) tabla.getModel();
         Object[] obj = new Object[9];
@@ -260,7 +260,7 @@ public class Controlador_Usuario implements ActionListener {
             usuario.setEstado(editUsuario.cbx_estado.getSelectedItem().toString());
             usuario.setId(Integer.parseInt(editUsuario.lbl_id.getText()));
             usuarioDAO.actualizarUsuario(usuario);
-            JOptionPane.showMessageDialog(null, "actualizado");
+            JOptionPane.showMessageDialog(null, "usuario actualizado");
             limpiarCampos();
             ocultarErrores();
             limpiarTablaUsusario();

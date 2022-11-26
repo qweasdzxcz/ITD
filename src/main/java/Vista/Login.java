@@ -45,11 +45,15 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_username.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 200, 30));
 
         error_username.setBackground(new java.awt.Color(0, 0, 0));
         error_username.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(error_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 200, 30));
+
+        txt_password.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 200, 30));
         jPanel1.add(error_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 200, 30));
         jPanel1.add(error_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 200, -1));

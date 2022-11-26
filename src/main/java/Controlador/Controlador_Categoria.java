@@ -139,10 +139,11 @@ public class Controlador_Categoria implements ActionListener {
         lbl_idCategoria.setText(categoriaTabla.getValueAt(fila, 0).toString());
         txt_nombreCat.setText(categoriaTabla.getValueAt(fila, 1).toString());
         cbx_estadoCat.setSelectedItem(categoriaTabla.getValueAt(fila, 2).toString());
+        ocultarErrores();
     }
     
     public void actualizarCategoria() {
-        if (validar(txt_nombreCat, error_nombreCat, "R") != false && validarCbx(cbx_estadoCat, error_estadoCat) != false) {
+        if (validar(txt_nombreCat, error_nombreCat, "A") != false && validarCbx(cbx_estadoCat, error_estadoCat) != false) {
             categoria.setNombre(txt_nombreCat.getText());
             categoria.setEstado(cbx_estadoCat.getSelectedItem().toString());
             categoria.setId(Integer.parseInt(lbl_idCategoria.getText()));

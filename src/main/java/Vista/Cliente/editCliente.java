@@ -1,21 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
+
 package Vista.Cliente;
 
-/**
- *
- * @author QWEASDZXC
- */
+import Vista.Principal;
+
 public class editCliente extends javax.swing.JDialog {
 
-    /**
-     * Creates new form editCliente
-     */
     public editCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -27,21 +21,135 @@ public class editCliente extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txt_nombreC = new javax.swing.JTextField();
+        txt_paternoC = new javax.swing.JTextField();
+        error_nombreC = new javax.swing.JLabel();
+        error_maternoC = new javax.swing.JLabel();
+        txt_maternoC = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txt_celularC = new javax.swing.JTextField();
+        error_celularC = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cbx_estado = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        error_estado = new javax.swing.JLabel();
+        btn_actualizar = new javax.swing.JButton();
+        lbl_id = new javax.swing.JLabel();
+        error_paternoC = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("Nombre ");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, 30));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setText("Apellido P.");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 150, 30));
+
+        txt_nombreC.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_nombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 200, 30));
+
+        txt_paternoC.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_paternoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 200, 30));
+
+        error_nombreC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        error_nombreC.setForeground(new java.awt.Color(255, 51, 51));
+        error_nombreC.setText("Error");
+        jPanel1.add(error_nombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 200, -1));
+
+        error_maternoC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        error_maternoC.setForeground(new java.awt.Color(255, 51, 51));
+        error_maternoC.setText("Error");
+        jPanel1.add(error_maternoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 200, -1));
+
+        txt_maternoC.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_maternoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 200, 30));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setText("Apellido M.");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 30));
+
+        txt_celularC.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_celularC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 200, 30));
+
+        error_celularC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        error_celularC.setForeground(new java.awt.Color(255, 51, 51));
+        error_celularC.setText("Error");
+        jPanel1.add(error_celularC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 200, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 153, 51));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("EDITAR CLIENTE");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 260, 40));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 60));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setText("Celular");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 30));
+
+        cbx_estado.setBackground(new java.awt.Color(255, 255, 255));
+        cbx_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        cbx_estado.setSelectedIndex(-1);
+        jPanel1.add(cbx_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 200, 30));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setText("Estado");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 150, 30));
+
+        error_estado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        error_estado.setForeground(new java.awt.Color(255, 51, 51));
+        error_estado.setText("Error");
+        jPanel1.add(error_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 200, -1));
+
+        btn_actualizar.setBackground(new java.awt.Color(0, 0, 0));
+        btn_actualizar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_actualizar.setForeground(new java.awt.Color(255, 153, 102));
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.setBorder(null);
+        btn_actualizar.setBorderPainted(false);
+        btn_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_actualizar.setFocusPainted(false);
+        btn_actualizar.setFocusable(false);
+        btn_actualizar.setRequestFocusEnabled(false);
+        btn_actualizar.setRolloverEnabled(false);
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 200, 50));
+
+        lbl_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(lbl_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 60, 30));
+
+        error_paternoC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        error_paternoC.setForeground(new java.awt.Color(255, 51, 51));
+        error_paternoC.setText("Error");
+        jPanel1.add(error_paternoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 200, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,5 +194,25 @@ public class editCliente extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btn_actualizar;
+    public static javax.swing.JComboBox<String> cbx_estado;
+    public static javax.swing.JLabel error_celularC;
+    public static javax.swing.JLabel error_estado;
+    public static javax.swing.JLabel error_maternoC;
+    public static javax.swing.JLabel error_nombreC;
+    public static javax.swing.JLabel error_paternoC;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    public static javax.swing.JLabel lbl_id;
+    public static javax.swing.JTextField txt_celularC;
+    public static javax.swing.JTextField txt_maternoC;
+    public static javax.swing.JTextField txt_nombreC;
+    public static javax.swing.JTextField txt_paternoC;
     // End of variables declaration//GEN-END:variables
 }

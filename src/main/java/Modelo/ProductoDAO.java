@@ -32,6 +32,7 @@ public class ProductoDAO {
             ps.executeUpdate();
 
         } catch (Exception e) {
+             System.out.println(e.toString());
         }
         return respuesta;
     }
@@ -56,6 +57,7 @@ public class ProductoDAO {
                 lista.add(pro);
             }
         } catch (Exception e) {
+             System.out.println(e.toString());
         }
         return lista;
     }
@@ -90,6 +92,7 @@ public class ProductoDAO {
 
             }
         } catch (Exception e) {
+            System.out.println(e.toString());
         }
         return p;
     }
@@ -109,14 +112,14 @@ public class ProductoDAO {
             ps.executeUpdate();
 
         } catch (Exception e) {
+            System.out.println(e.toString());
         }
         return respuesta;
     }
 
     //BUSCAR PRODCUTO POR ID O NOMBRE SEGUN LO QUE INGRESEMOS
     public List buscarSegunId_Producto(String filtro, String valor) {
-        String sql = "select p.id_producto,p.nombre,p.descripcion,p.cantidad,p.precio,c.nombre_cat,p.estado from producto p inner join categoria c on p.id_categoria=c.id_categoria where " + filtro + " like '%" + valor + "%'";
-        //String sql = "select * from producto where " + filtro + " like '%" + valor + "%'";
+        String sql = "select p.id_producto,p.nombre,p.descripcion,p.cantidad,p.precio,c.nombre_cat,p.estado from producto p inner join categoria c on p.id_categoria=c.id_categoria where " + filtro + " like '%" + valor + "%' and p.estado = 'Activo'";
         List<Producto> lista = new ArrayList<>();
         try {
             con = cn.getConnection();
@@ -135,7 +138,8 @@ public class ProductoDAO {
 
                 lista.add(pro);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println(e.toString());
         }
         return lista;
     }

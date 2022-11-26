@@ -1,5 +1,7 @@
-
 package Vista.Cliente;
+
+import Controlador.Controlador_Cliente;
+import Vista.Principal;
 
 public class formCliente extends javax.swing.JDialog {
 
@@ -17,23 +19,22 @@ public class formCliente extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txt_direccion = new javax.swing.JTextField();
-        txt_nombre = new javax.swing.JTextField();
-        txt_paterno = new javax.swing.JTextField();
-        txt_materno = new javax.swing.JTextField();
-        txt_celular = new javax.swing.JTextField();
-        btn_registrar = new javax.swing.JButton();
-        error_direccion = new javax.swing.JLabel();
-        error_nombre = new javax.swing.JLabel();
-        error_paterno = new javax.swing.JLabel();
-        error_materno = new javax.swing.JLabel();
-        error_celular = new javax.swing.JLabel();
+        txt_nombreC = new javax.swing.JTextField();
+        txt_paternoC = new javax.swing.JTextField();
+        txt_maternoC = new javax.swing.JTextField();
+        txt_celularC = new javax.swing.JTextField();
+        btn_registrarCliente = new javax.swing.JButton();
+        error_nombreC = new javax.swing.JLabel();
+        error_paternoC = new javax.swing.JLabel();
+        error_maternoC = new javax.swing.JLabel();
+        error_celularC = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -52,10 +53,6 @@ public class formCliente extends javax.swing.JDialog {
         jLabel4.setText("Nombre ");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Direccion");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 150, 30));
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Apellido P.");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 150, 30));
@@ -68,50 +65,42 @@ public class formCliente extends javax.swing.JDialog {
         jLabel7.setText("Celular");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 150, 30));
 
-        txt_direccion.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 200, 30));
+        txt_nombreC.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_nombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 200, 30));
 
-        txt_nombre.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 200, 30));
+        txt_paternoC.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_paternoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 200, 30));
 
-        txt_paterno.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_paterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 200, 30));
+        txt_maternoC.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_maternoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 200, 30));
 
-        txt_materno.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_materno, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 200, 30));
+        txt_celularC.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_celularC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 200, 30));
 
-        txt_celular.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 200, 30));
+        btn_registrarCliente.setText("Registrar");
+        jPanel1.add(btn_registrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 180, 50));
 
-        btn_registrar.setText("Registrar");
-        jPanel1.add(btn_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 180, 50));
+        error_nombreC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        error_nombreC.setForeground(new java.awt.Color(255, 51, 51));
+        error_nombreC.setText("Error");
+        jPanel1.add(error_nombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 200, -1));
 
-        error_direccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        error_direccion.setForeground(new java.awt.Color(255, 51, 51));
-        error_direccion.setText("Error");
-        jPanel1.add(error_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 200, -1));
+        error_paternoC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        error_paternoC.setForeground(new java.awt.Color(255, 51, 51));
+        error_paternoC.setText("Error");
+        jPanel1.add(error_paternoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 200, -1));
 
-        error_nombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        error_nombre.setForeground(new java.awt.Color(255, 51, 51));
-        error_nombre.setText("Error");
-        jPanel1.add(error_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 200, -1));
+        error_maternoC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        error_maternoC.setForeground(new java.awt.Color(255, 51, 51));
+        error_maternoC.setText("Error");
+        jPanel1.add(error_maternoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 200, -1));
 
-        error_paterno.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        error_paterno.setForeground(new java.awt.Color(255, 51, 51));
-        error_paterno.setText("Error");
-        jPanel1.add(error_paterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 200, -1));
+        error_celularC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        error_celularC.setForeground(new java.awt.Color(255, 51, 51));
+        error_celularC.setText("Error");
+        jPanel1.add(error_celularC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 200, -1));
 
-        error_materno.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        error_materno.setForeground(new java.awt.Color(255, 51, 51));
-        error_materno.setText("Error");
-        jPanel1.add(error_materno, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 200, -1));
-
-        error_celular.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        error_celular.setForeground(new java.awt.Color(255, 51, 51));
-        error_celular.setText("Error");
-        jPanel1.add(error_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 200, -1));
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 421));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -149,29 +138,30 @@ public class formCliente extends javax.swing.JDialog {
                     System.exit(0);
                 }
             });
+            Principal p = new Principal();
+            editCliente ec = new editCliente(new javax.swing.JFrame(), true);
+            Controlador_Cliente ccli = new Controlador_Cliente(p, dialog, ec);
+            ccli.ocultarErrores();
             dialog.setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btn_registrar;
-    public static javax.swing.JLabel error_celular;
-    public static javax.swing.JLabel error_direccion;
-    public static javax.swing.JLabel error_materno;
-    public static javax.swing.JLabel error_nombre;
-    public static javax.swing.JLabel error_paterno;
+    public javax.swing.JButton btn_registrarCliente;
+    public static javax.swing.JLabel error_celularC;
+    public static javax.swing.JLabel error_maternoC;
+    public static javax.swing.JLabel error_nombreC;
+    public static javax.swing.JLabel error_paternoC;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    public static javax.swing.JTextField txt_celular;
-    public static javax.swing.JTextField txt_direccion;
-    public static javax.swing.JTextField txt_materno;
-    public static javax.swing.JTextField txt_nombre;
-    public static javax.swing.JTextField txt_paterno;
+    public static javax.swing.JTextField txt_celularC;
+    public static javax.swing.JTextField txt_maternoC;
+    public static javax.swing.JTextField txt_nombreC;
+    public static javax.swing.JTextField txt_paternoC;
     // End of variables declaration//GEN-END:variables
 }

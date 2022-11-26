@@ -59,6 +59,12 @@ public class Principal extends javax.swing.JFrame {
         btn_menu = new javax.swing.JButton();
         lbl_datos = new javax.swing.JLabel();
         tabed = new javax.swing.JTabbedPane();
+        panel_clientes = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        clienteTabla = new javax.swing.JTable();
+        btn_nuevoCliente = new javax.swing.JButton();
+        txt_buscarCliente = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
         panel_nuevasVentas = new javax.swing.JPanel();
         txt_cantidad = new javax.swing.JTextField();
         btn_buscarProducto = new javax.swing.JButton();
@@ -119,10 +125,6 @@ public class Principal extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        panel_clientes = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btn_nuevoCliente = new javax.swing.JButton();
         panel_menu = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btn_usuarios = new javax.swing.JButton();
@@ -191,7 +193,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Elephant", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 102, 51));
-        jLabel8.setText("Chosita Burguer");
+        jLabel8.setText("Chozita Burguer");
         barraEmpresa.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -228,6 +230,50 @@ public class Principal extends javax.swing.JFrame {
 
         tabed.setBackground(new java.awt.Color(255, 255, 255));
 
+        panel_clientes.setBackground(new java.awt.Color(255, 255, 255));
+        panel_clientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        clienteTabla.setBackground(new java.awt.Color(255, 255, 255));
+        clienteTabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "NOMBRE", "APELLIDO P.", "APELLIDO M.", "CELULAR", "ESTADO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        clienteTabla.setComponentPopupMenu(popCliente);
+        jScrollPane6.setViewportView(clienteTabla);
+
+        panel_clientes.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 127, 930, 460));
+
+        btn_nuevoCliente.setText("Nuevo CLiente");
+        panel_clientes.add(btn_nuevoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 40, 150, 50));
+
+        txt_buscarCliente.setBackground(new java.awt.Color(255, 255, 255));
+        txt_buscarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_buscarClienteKeyTyped(evt);
+            }
+        });
+        panel_clientes.add(txt_buscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 270, 30));
+
+        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("Busqueda por Apellido Paterno");
+        panel_clientes.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        tabed.addTab("tab8", panel_clientes);
+
         panel_nuevasVentas.setBackground(new java.awt.Color(255, 255, 255));
         panel_nuevasVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -248,8 +294,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cliente");
         panel_nuevasVentas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 560, 80, 20));
-
-        lbl_precio.setText("0");
         panel_nuevasVentas.add(lbl_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 60, 30));
 
         nuevaVentaTabla.setBackground(new java.awt.Color(255, 255, 255));
@@ -294,8 +338,6 @@ public class Principal extends javax.swing.JFrame {
 
         btn_agregarTabla.setText("Añadir");
         panel_nuevasVentas.add(btn_agregarTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 100, 30));
-
-        lbl_stock.setText("0");
         panel_nuevasVentas.add(lbl_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 70, 30));
 
         jLabel22.setBackground(new java.awt.Color(0, 0, 0));
@@ -303,8 +345,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Precio");
         panel_nuevasVentas.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 90, -1));
-
-        lbl_idProducto.setText("0");
         panel_nuevasVentas.add(lbl_idProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 50, 20));
 
         tabed.addTab("tab4", panel_nuevasVentas);
@@ -448,7 +488,7 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        usuarioTabla.setComponentPopupMenu(popUsuario);
+        usuarioTabla.setComponentPopupMenu(popCliente);
         usuarioTabla.setRowHeight(30);
         usuarioTabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         usuarioTabla.setShowGrid(false);
@@ -559,37 +599,6 @@ public class Principal extends javax.swing.JFrame {
 
         tabed.addTab("tab3", panel_principal);
 
-        panel_clientes.setBackground(new java.awt.Color(255, 255, 255));
-        panel_clientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "NOMBRE", "APELLIDO P.", "APELLIDO M.", "CELULAR", "DIRECCION", "ESTADO"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane6.setViewportView(jTable1);
-
-        panel_clientes.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 930, -1));
-
-        btn_nuevoCliente.setText("Nuevo CLiente");
-        panel_clientes.add(btn_nuevoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 40, 150, 50));
-
-        tabed.addTab("tab8", panel_clientes);
-
         jPanel1.add(tabed, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 1060, 680));
 
         panel_menu.setBackground(new java.awt.Color(255, 153, 102));
@@ -659,6 +668,14 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_registrarCategoriaActionPerformed
 
+    private void txt_buscarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarClienteKeyTyped
+//        Principal p = new Principal();
+//        formCliente fc = new formCliente(new javax.swing.JFrame(), true);
+//        editCliente ec = new editCliente(new javax.swing.JFrame(), true);
+//        Controlador_Cliente ccli = new Controlador_Cliente(p, fc, ec);
+//        ccli.tablaDatos(clienteTabla);
+    }//GEN-LAST:event_txt_buscarClienteKeyTyped
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -695,7 +712,7 @@ public class Principal extends javax.swing.JFrame {
                 BusquedaCliente busCliente = new BusquedaCliente(new javax.swing.JFrame(), true);
                 formCliente fc = new formCliente(new javax.swing.JFrame(), true);
                 editCliente ec = new editCliente(new javax.swing.JFrame(), true);
-                
+
                 Controlador_Usuario cu = new Controlador_Usuario(p, f, e);
                 Controlador_Categoria cc = new Controlador_Categoria(p);
                 Controlador_Producto cp = new Controlador_Producto(p, fp, ep);
@@ -705,6 +722,7 @@ public class Principal extends javax.swing.JFrame {
                 cc.ocultarErrores();
                 cu.ocultarErrores();
                 cp.ocultarErrores();
+                ccli.ocultarErrores();
                 //cp.llenarCategoria();
                 p.setVisible(true);
             }
@@ -740,6 +758,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JButton btn_ventas;
     public static javax.swing.JTable categoriaTabla;
     public static javax.swing.JComboBox<String> cbx_estadoCat;
+    public static javax.swing.JTable clienteTabla;
     public static javax.swing.JLabel error_estadoCat;
     public static javax.swing.JLabel error_nombreCat;
     public javax.swing.JButton jButton1;
@@ -756,6 +775,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -781,7 +801,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     public static javax.swing.JLabel lbl_cliente;
     public static javax.swing.JLabel lbl_datos;
@@ -808,6 +827,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu popUsuario;
     public static javax.swing.JTable productoTabla;
     public static javax.swing.JTabbedPane tabed;
+    public static javax.swing.JTextField txt_buscarCliente;
     private javax.swing.JTextField txt_buscarUsuario;
     private javax.swing.JTextField txt_buscarUsuario2;
     public static javax.swing.JTextField txt_cantidad;

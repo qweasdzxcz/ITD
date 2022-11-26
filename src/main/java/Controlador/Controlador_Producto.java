@@ -124,7 +124,7 @@ public final class Controlador_Producto implements ActionListener {
 
     public void llenarCategoria() {
         formProducto.cbx_categoria.removeAllItems();
-        List<Categoria> listaC = categoriaDAO.listarCategoria();
+        List<Categoria> listaC = categoriaDAO.llenarCbxCategoria();
         for (int i = 0; i < listaC.size(); i++) {
             int id = listaC.get(i).getId();
             String nombre = listaC.get(i).getNombre();
