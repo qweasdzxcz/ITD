@@ -65,6 +65,7 @@ public class Principal extends javax.swing.JFrame {
         btn_nuevoCliente = new javax.swing.JButton();
         txt_buscarCliente = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         panel_nuevasVentas = new javax.swing.JPanel();
         txt_cantidad = new javax.swing.JTextField();
         btn_buscarProducto = new javax.swing.JButton();
@@ -90,6 +91,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         panel_categorias = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         categoriaTabla = new javax.swing.JTable();
@@ -105,16 +111,19 @@ public class Principal extends javax.swing.JFrame {
         btn_actualizarCategoria = new javax.swing.JButton();
         btn_registrarCategoria = new javax.swing.JButton();
         lbl_idCategoria = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
         panel_usuarios = new javax.swing.JPanel();
         btn_nuevoUsuario = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         usuarioTabla = new javax.swing.JTable();
         txt_buscarUsuario = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
         panel_productos = new javax.swing.JPanel();
         btn_nuevoProducto = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         productoTabla = new javax.swing.JTable();
         txt_buscarUsuario2 = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
         panel_principal = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -272,6 +281,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel21.setText("Busqueda por Apellido Paterno");
         panel_clientes.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
+        jButton2.setText("Reporte");
+        panel_clientes.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 110, 40));
+
         tabed.addTab("tab8", panel_clientes);
 
         panel_nuevasVentas.setBackground(new java.awt.Color(255, 255, 255));
@@ -366,12 +378,27 @@ public class Principal extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(jTable2);
 
-        panel_ventas.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 870, -1));
+        panel_ventas.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 870, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Registro de Ventas");
-        panel_ventas.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 280, 40));
+        panel_ventas.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 280, 40));
+
+        jButton3.setText("Reporte");
+        panel_ventas.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 110, 40));
+
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        panel_ventas.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 100, -1));
+
+        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        panel_ventas.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 100, -1));
+
+        jLabel23.setText("a");
+        panel_ventas.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 30, -1));
+
+        jButton4.setText("Buscar");
+        panel_ventas.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 62, 100, 40));
 
         tabed.addTab("tab6", panel_ventas);
 
@@ -463,6 +490,9 @@ public class Principal extends javax.swing.JFrame {
 
         panel_categorias.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 320, 290));
 
+        jButton5.setText("Reporte");
+        panel_categorias.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 100, 40));
+
         tabed.addTab("tab5", panel_categorias);
 
         panel_usuarios.setBackground(new java.awt.Color(255, 255, 255));
@@ -518,6 +548,9 @@ public class Principal extends javax.swing.JFrame {
         txt_buscarUsuario.setBackground(new java.awt.Color(255, 255, 255));
         panel_usuarios.add(txt_buscarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 380, 30));
 
+        jButton6.setText("Reporte");
+        panel_usuarios.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 80, 30));
+
         tabed.addTab("tab1", panel_usuarios);
 
         panel_productos.setBackground(new java.awt.Color(255, 255, 255));
@@ -526,6 +559,7 @@ public class Principal extends javax.swing.JFrame {
         btn_nuevoProducto.setText("Nuevo Producto");
         panel_productos.add(btn_nuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 160, 40));
 
+        productoTabla.setBackground(new java.awt.Color(255, 255, 255));
         productoTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -540,6 +574,9 @@ public class Principal extends javax.swing.JFrame {
 
         txt_buscarUsuario2.setBackground(new java.awt.Color(255, 255, 255));
         panel_productos.add(txt_buscarUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 380, 30));
+
+        jButton7.setText("Reporte");
+        panel_productos.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 90, 40));
 
         tabed.addTab("tab2", panel_productos);
 
@@ -763,6 +800,12 @@ public class Principal extends javax.swing.JFrame {
     public static javax.swing.JLabel error_estadoCat;
     public static javax.swing.JLabel error_nombreCat;
     public javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -778,6 +821,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -803,6 +847,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     public static javax.swing.JLabel lbl_cliente;
     public static javax.swing.JLabel lbl_datos;
     public static javax.swing.JLabel lbl_idCategoria;
