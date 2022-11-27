@@ -1,17 +1,20 @@
 package Controlador;
 
 import Modelo.CategoriaDAO;
+import Modelo.Cliente;
+import Modelo.ClienteDAO;
 import Modelo.Producto;
 import Modelo.ProductoDAO;
 import Vista.Principal;
 import static Vista.Principal.*;
-import Vista.Producto.editProducto;
-import Vista.Producto.formProducto;
 import Vista.Ventas.BusquedaCliente;
+import static Vista.Ventas.BusquedaCliente.*;
 import Vista.Ventas.BusquedaProducto;
 import static Vista.Ventas.BusquedaProducto.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -20,15 +23,19 @@ import javax.swing.table.DefaultTableModel;
 
 public class Controlador_NuevaVenta implements ActionListener {
 
-    private Principal principal;
-    private BusquedaProducto busquedaPro;
-    private BusquedaCliente busquedaCli;
+    private final Principal principal;
+    private final BusquedaProducto busquedaPro;
+    private final BusquedaCliente busquedaCli;
 
     Producto producto = new Producto();
     ProductoDAO productoDAO = new ProductoDAO();
 
+    Cliente cliente = new Cliente();
+    ClienteDAO clienteDAO = new ClienteDAO();
+
     DefaultTableModel tablaNuevaV = new DefaultTableModel();
     DefaultTableModel tablaBusquedaProducto = new DefaultTableModel();
+    DefaultTableModel tablaBC = new DefaultTableModel();
 
     int objVenta = 0;
 
@@ -43,6 +50,9 @@ public class Controlador_NuevaVenta implements ActionListener {
         principal.btn_agregarTabla.addActionListener(this);
         busquedaPro.btn_agregar.addActionListener(this);
         // listarProducto(busquedaProductoTabla);
+        listarCliente(busquedaClienteTabla);
+        //buscarCliente();
+        
     }
 
     @Override
@@ -61,7 +71,10 @@ public class Controlador_NuevaVenta implements ActionListener {
             agregarTabla();
         }
         if (e.getSource() == principal.btn_buscarCliente) {
+            listarCliente(busquedaClienteTabla);
+            
             busquedaCli.setVisible(true);
+            
         }
         if (e.getSource() == principal.btn_generarVenta) {
 
@@ -107,6 +120,7 @@ public class Controlador_NuevaVenta implements ActionListener {
         principal.lbl_precio.setText(busquedaProductoTabla.getValueAt(fila, 4).toString());
         principal.lbl_stock.setText(busquedaProductoTabla.getValueAt(fila, 5).toString());
         busquedaPro.setVisible(false);
+        principal.txt_cantidad.requestFocus();
     }
 
     public void limpiarCamposNuevaVenta() {
@@ -165,5 +179,71 @@ public class Controlador_NuevaVenta implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(null, "INGRESE CANTIDAD");
         }
+    }
+
+    //*********************************************************
+    public void listarCliente(JTable tabla) {
+//        for (int i = 0; i < tablaBusquedaCliente.getRowCount(); i++) {
+//            tablaBusquedaCliente.removeRow(i);
+//            i = i - 1;
+//        }
+        List<Cliente> listaCli = clienteDAO.listarCliente();
+        tablaBC = (DefaultTableModel) tabla.getModel();
+        Object[] obj = new Object[5];
+        for (int i = 0; i < listaCli.size(); i++) {
+            obj[0] = listaCli.get(i).getId();
+            obj[1] = listaCli.get(i).getNombre();
+            obj[2] = listaCli.get(i).getApellidoP();
+            obj[3] = listaCli.get(i).getApellidoM();
+            obj[4] = listaCli.get(i).getCelular();
+            
+            tablaBC.addRow(obj);
+            System.out.println(obj[0] + "\n" + obj[1] + "\n" + obj[2] + "\n" + obj[3] + "\n" + obj[4]);
+        }
+        tabla.setModel(tablaBC);
+    }
+    //*********************************************************
+    public void tablaDatosCliente(JTable tabla) {
+        for (int i = 0; i < tablaBC.getRowCount(); i++) {
+            tablaBC.removeRow(i);
+            i = i - 1;
+        }
+        String valor = txt_buscarCliente.getText();
+        List<Cliente> listaCli = clienteDAO.buscarCliente(valor);
+        //System.out.println("filtro : " + filtro + "\n" + "valor : " + a);
+        tablaBC = (DefaultTableModel) tabla.getModel();
+        Object[] obj = new Object[6];
+        for (int i = 0; i < listaCli.size(); i++) {
+            obj[0] = listaCli.get(i).getId();
+            obj[1] = listaCli.get(i).getNombre();
+            obj[2] = listaCli.get(i).getApellidoP();
+            obj[3] = listaCli.get(i).getApellidoM();
+            obj[4] = listaCli.get(i).getCelular();
+            obj[5] = listaCli.get(i).getEstado();
+            tablaBC.addRow(obj);
+            //System.out.println(obj[0] + "\n" + obj[1] + "\n" + obj[2] + "\n" + obj[3] + "\n" + obj[4] + "\n" + obj[5]);
+        }
+        tabla.setModel(tablaBC);
+    }
+
+    public void buscarCliente() {
+        //BusquedaCliente busC = new BusquedaCliente(principal, true);
+        KeyListener evento = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {              
+                tablaDatosCliente(busquedaCli.busquedaClienteTabla);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        busquedaCli.txt_valorCliente.addKeyListener(evento);
     }
 }

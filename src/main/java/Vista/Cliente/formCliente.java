@@ -141,7 +141,7 @@ public class formCliente extends javax.swing.JDialog {
             Principal p = new Principal();
             editCliente ec = new editCliente(new javax.swing.JFrame(), true);
             Controlador_Cliente ccli = new Controlador_Cliente(p, dialog, ec);
-            ccli.ocultarErrores();
+            //ccli.ocultarErrores();
             dialog.setVisible(true);
         });
     }

@@ -7,13 +7,11 @@ import Vista.Cliente.formCliente;
 import static Vista.Cliente.formCliente.*;
 import Vista.Principal;
 import static Vista.Principal.*;
-import static Vista.Usuario.formUsuario.error_celular;
-import static Vista.Usuario.formUsuario.error_dni;
-import static Vista.Usuario.formUsuario.error_materno;
-import static Vista.Usuario.formUsuario.error_nombre;
-import static Vista.Usuario.formUsuario.error_paterno;
+import Vista.Ventas.BusquedaCliente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -22,11 +20,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class Controlador_Cliente implements ActionListener {
+public final class Controlador_Cliente implements ActionListener {
 
-    Principal principal;
-    formCliente formCliente;
-    editCliente editCliente;
+    private final Principal principal;
+    private final formCliente formCliente;
+    private final editCliente editCliente;
     Cliente cliente = new Cliente();
     ClienteDAO clienteDAO = new ClienteDAO();
     DefaultTableModel tablaC = new DefaultTableModel();
@@ -42,6 +40,9 @@ public class Controlador_Cliente implements ActionListener {
         this.principal.btn_editarCliente.addActionListener(this);
         this.principal.btn_eliminarCliente.addActionListener(this);
         this.editCliente.btn_actualizar.addActionListener(this);
+        buscarCliente();
+        ocultarErrores();
+        limpiarCamposCliente();
     }
 
     @Override
@@ -52,7 +53,7 @@ public class Controlador_Cliente implements ActionListener {
         if (e.getSource() == principal.btn_nuevoCliente) {
             ocultarErrores();
             formCliente.setVisible(true);
-            limpiarCampos();
+            limpiarCamposCliente();
         }
         if (e.getSource() == principal.btn_clientes) {
             principal.tabed.setSelectedComponent(panel_clientes);
@@ -83,7 +84,8 @@ public class Controlador_Cliente implements ActionListener {
         editCliente.lbl_id.setVisible(false);
     }
 
-    public void limpiarCampos() {
+    public void limpiarCamposCliente() {
+        principal.txt_buscarCliente.setText("");
         formCliente.txt_nombreC.setText("");
         formCliente.txt_paternoC.setText("");
         formCliente.txt_maternoC.setText("");
@@ -146,14 +148,17 @@ public class Controlador_Cliente implements ActionListener {
             cliente.setCelular(txt_celularC.getText());
             clienteDAO.agregarCliente(cliente);
             JOptionPane.showMessageDialog(null, "cliente registrado");
-            limpiarCampos();
+            limpiarCamposCliente();
             ocultarErrores();
             listarCliente(clienteTabla);
         }
     }
 
     public void listarCliente(JTable tabla) {
-        limpiarTablaCliente();
+        for (int i = 0; i < tablaC.getRowCount(); i++) {
+            tablaC.removeRow(i);
+            i = i - 1;
+        }
         List<Cliente> listaCli = clienteDAO.listarCliente();
         tablaC = (DefaultTableModel) tabla.getModel();
         Object[] obj = new Object[6];
@@ -168,13 +173,6 @@ public class Controlador_Cliente implements ActionListener {
             //System.out.println(obj[0] + "\n" + obj[1] + "\n" + obj[2] + "\n" + obj[3] + "\n" + obj[4] + "\n" + obj[5]);
         }
         tabla.setModel(tablaC);
-    }
-
-    public void limpiarTablaCliente() {
-        for (int i = 0; i < tablaC.getRowCount(); i++) {
-            tablaC.removeRow(i);
-            i = i - 1;
-        }
     }
 
     public void eliminarCliente() {
@@ -213,14 +211,17 @@ public class Controlador_Cliente implements ActionListener {
             clienteDAO.actualizarCliente(cliente);
             editCliente.setVisible(false);
             JOptionPane.showMessageDialog(null, "cliente actualizado");
-            limpiarCampos();
+            limpiarCamposCliente();
             ocultarErrores();
             listarCliente(clienteTabla);
         }
     }
 
-    public void tablaDatos(JTable tabla) {
-        limpiarTablaCliente();
+    public void tablaDatosCliente(JTable tabla) {
+        for (int i = 0; i < tablaC.getRowCount(); i++) {
+            tablaC.removeRow(i);
+            i = i - 1;
+        }
         String valor = txt_buscarCliente.getText();
         List<Cliente> listaCli = clienteDAO.buscarCliente(valor);
         //System.out.println("filtro : " + filtro + "\n" + "valor : " + a);
@@ -237,6 +238,30 @@ public class Controlador_Cliente implements ActionListener {
             //System.out.println(obj[0] + "\n" + obj[1] + "\n" + obj[2] + "\n" + obj[3] + "\n" + obj[4] + "\n" + obj[5]);
         }
         tabla.setModel(tablaC);
+    }
+
+    public void buscarCliente() {
+        BusquedaCliente busC = new BusquedaCliente(principal, true);
+        KeyListener evento = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                tablaDatosCliente(clienteTabla);
+                tablaDatosCliente(busC.busquedaClienteTabla);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        };
+        txt_buscarCliente.addKeyListener(evento);
+        
+        busC.txt_valorCliente.addKeyListener(evento);
     }
 
 }

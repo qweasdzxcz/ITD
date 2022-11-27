@@ -722,7 +722,8 @@ public class Principal extends javax.swing.JFrame {
                 cc.ocultarErrores();
                 cu.ocultarErrores();
                 cp.ocultarErrores();
-                ccli.ocultarErrores();
+               
+//                ccli.eventosTeclado();
                 //cp.llenarCategoria();
                 p.setVisible(true);
             }
